@@ -14,6 +14,7 @@ gem "thruster", require: false
 gem "rack-cors"
 gem "jb"
 gem "kaminari"
+gem "money-rails"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
