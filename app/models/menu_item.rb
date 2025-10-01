@@ -15,13 +15,14 @@
 # Indexes
 #
 #  index_menu_items_on_menu_id  (menu_id)
+#  index_menu_items_on_name     (name) UNIQUE
 #
 # Foreign Keys
 #
 #  menu_id  (menu_id => menus.id)
 #
 class MenuItem < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :price, presence: true
 
   monetize :price_cents, allow_nil: false,

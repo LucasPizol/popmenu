@@ -15,6 +15,7 @@
 # Indexes
 #
 #  index_menu_items_on_menu_id  (menu_id)
+#  index_menu_items_on_name     (name) UNIQUE
 #
 # Foreign Keys
 #
@@ -31,6 +32,7 @@ describe MenuItem, :unit, type: :model do
     it { is_expected.to be_valid }
 
     it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
   end
 
   describe 'associations' do
