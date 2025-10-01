@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :menu do
+  factory :restaurant do
     name { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
-    restaurant { create(:restaurant) }
   end
 end
