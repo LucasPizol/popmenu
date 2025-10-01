@@ -1,0 +1,5 @@
+# frozen_string_literal: true
+
+{
+  menu: render("parse_menu", menu: @menu)
+}

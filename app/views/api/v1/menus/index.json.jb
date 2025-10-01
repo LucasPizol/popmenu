@@ -1,0 +1,8 @@
+{
+  data: render(partial: "parse_menu", collection: @menus, as: :menu),
+  meta: {
+    currentPage: @menus.current_page,
+    totalPages: @menus.total_pages,
+    totalCount: @menus.total_count
+  }
+}
