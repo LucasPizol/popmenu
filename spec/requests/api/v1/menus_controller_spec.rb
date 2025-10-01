@@ -6,7 +6,6 @@ RSpec.describe Api::V1::MenusController, type: :request, swagger_doc: 'api/swagg
   path '/api/v1/menus' do
     get 'Loads all menus' do
       tags 'Menus'
-      security [Bearer: []]
       consumes 'application/json'
       produces 'application/json'
 
@@ -21,7 +20,7 @@ RSpec.describe Api::V1::MenusController, type: :request, swagger_doc: 'api/swagg
   path '/api/v1/menus/{id}' do
     get 'Loads a menu' do
       tags 'Menus'
-      security [Bearer: []]
+      security [ Bearer: [] ]
       consumes 'application/json'
       produces 'application/json'
 
