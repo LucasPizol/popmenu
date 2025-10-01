@@ -2,17 +2,19 @@
 
 require "rails_helper"
 
-describe Api::V1::MenusController, type: :controller do
+describe Api::V1::MenuItemsController, type: :controller do
   render_views
 
+  let_it_be(:menu) { create(:menu) }
 
   describe "GET #index" do
-    subject(:make_a_request) { get :index, params: params, format: :json }
+    subject(:make_a_request) { get :index, params: { menu_id: menu_id }.merge(params), format: :json }
 
-    let_it_be(:menus) { create_list(:menu, 12) }
+    let_it_be(:menu_items) { create_list(:menu_item, 12, menu: menu) }
+    let(:menu_id) { menu.id }
 
     context 'when params are provided' do
-      let(:params) { { page: page, per_page: per_page } }
+      let(:params) { { menu_id: menu.id, page: page, per_page: per_page } }
 
       context 'when page is one' do
         let(:page) { 1 }
@@ -20,7 +22,7 @@ describe Api::V1::MenusController, type: :controller do
 
         it { is_expected.to have_http_status(:success) }
 
-        it "returns the correct number of menus" do
+        it "returns the correct number of menu items" do
           make_a_request
 
           expect(json_response[:data].size).to eq(10)
@@ -43,7 +45,7 @@ describe Api::V1::MenusController, type: :controller do
 
         it { is_expected.to have_http_status(:success) }
 
-        it "returns the correct number of menus" do
+        it "returns the correct number of menu items" do
           make_a_request
 
           expect(json_response[:data].size).to eq(2)
@@ -66,7 +68,7 @@ describe Api::V1::MenusController, type: :controller do
 
       it { is_expected.to have_http_status(:success) }
 
-      it "returns the correct number of menus" do
+      it "returns the correct number of menu items" do
         make_a_request
 
         expect(json_response[:data].size).to eq(10)
@@ -82,33 +84,10 @@ describe Api::V1::MenusController, type: :controller do
         })
       end
     end
-  end
 
-  describe "GET #show" do
-    subject(:make_a_request) { get :show, params: params, format: :json }
-
-    let_it_be(:menu) { create(:menu) }
-
-    context 'when success' do
-      let(:params) { { id: menu.id } }
-
-      it { is_expected.to have_http_status(:success) }
-
-      it "returns the correct menu" do
-        make_a_request
-
-        expect(json_response[:menu]).to match({
-          id: menu.id,
-          name: menu.name,
-          description: menu.description,
-          createdAt: a_kind_of(String),
-          updatedAt: a_kind_of(String)
-        })
-      end
-    end
-
-    context 'when error' do
-      let(:params) { { id: 'invalid' } }
+    context 'when menu is not found' do
+      let(:menu_id) { 'invalid' }
+      let(:params) { {} }
 
       it { is_expected.to have_http_status(:not_found) }
     end

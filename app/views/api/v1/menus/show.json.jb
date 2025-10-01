@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 {
-  menu: render("parse_menu", menu: @menu)
+  menu: render("parse_menu", menu: @menu).tap do |menu|
+    menu[:description] = @menu.description
+  end
 }
