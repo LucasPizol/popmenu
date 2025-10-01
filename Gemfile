@@ -15,6 +15,8 @@ gem "rack-cors"
 gem "jb"
 gem "kaminari"
 gem "money-rails"
+gem "rswag-api"
+gem "rswag-ui"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -22,6 +24,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "annotaterb"
   gem "rubocop"
+
+  gem "rswag-specs"
 end
 
 group :test do

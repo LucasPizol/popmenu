@@ -2,6 +2,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 
 require 'spec_helper'
+require 'swagger_helper'
 require_relative '../config/environment'
 require 'rspec/rails'
 require 'database_cleaner'
