@@ -7,6 +7,7 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'test_prof/recipes/rspec/let_it_be'
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
