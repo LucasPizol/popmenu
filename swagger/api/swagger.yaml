@@ -1,0 +1,91 @@
+---
+openapi: 3.0.1
+info:
+  title: Backend PopMenu API
+  version: v1
+paths:
+  "/api/v1/menus":
+    get:
+      summary: Loads all menus
+      tags:
+      - Menus
+      security:
+      - Bearer: []
+      responses:
+        '200':
+          description: Menus loaded
+          content:
+            application/json:
+              example:
+                data:
+                - id: 1
+                  name: harum
+                  createdAt: '2025-10-01T16:02:43.370Z'
+                  updatedAt: '2025-10-01T16:02:43.370Z'
+                - id: 2
+                  name: autem
+                  createdAt: '2025-10-01T16:02:43.374Z'
+                  updatedAt: '2025-10-01T16:02:43.374Z'
+                - id: 3
+                  name: vero
+                  createdAt: '2025-10-01T16:02:43.375Z'
+                  updatedAt: '2025-10-01T16:02:43.375Z'
+                - id: 4
+                  name: velit
+                  createdAt: '2025-10-01T16:02:43.377Z'
+                  updatedAt: '2025-10-01T16:02:43.377Z'
+                - id: 5
+                  name: numquam
+                  createdAt: '2025-10-01T16:02:43.379Z'
+                  updatedAt: '2025-10-01T16:02:43.379Z'
+                - id: 6
+                  name: qui
+                  createdAt: '2025-10-01T16:02:43.381Z'
+                  updatedAt: '2025-10-01T16:02:43.381Z'
+                - id: 7
+                  name: quidem
+                  createdAt: '2025-10-01T16:02:43.386Z'
+                  updatedAt: '2025-10-01T16:02:43.386Z'
+                - id: 8
+                  name: culpa
+                  createdAt: '2025-10-01T16:02:43.387Z'
+                  updatedAt: '2025-10-01T16:02:43.387Z'
+                - id: 9
+                  name: quam
+                  createdAt: '2025-10-01T16:02:43.390Z'
+                  updatedAt: '2025-10-01T16:02:43.390Z'
+                - id: 10
+                  name: nostrum
+                  createdAt: '2025-10-01T16:02:43.398Z'
+                  updatedAt: '2025-10-01T16:02:43.398Z'
+                meta:
+                  currentPage: 1
+                  totalPages: 2
+                  totalCount: 12
+  "/api/v1/menus/{id}":
+    get:
+      summary: Loads a menu
+      tags:
+      - Menus
+      security:
+      - Bearer: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Menu loaded
+          content:
+            application/json:
+              example:
+                menu:
+                  id: 1
+                  name: alias
+                  createdAt: '2025-10-01T16:02:43.492Z'
+                  updatedAt: '2025-10-01T16:02:43.492Z'
+                  description: Maxime consectetur provident culpa.
+        '404':
+          description: Menu not found

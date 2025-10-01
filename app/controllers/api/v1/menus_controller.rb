@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::MenusController < Api::V1::ApplicationController
-  before_action :set_menu
+  before_action :set_menu, only: [ :show ]
 
   def index
     @menus = Menu.select(:id, :name, :created_at, :updated_at)
