@@ -4,13 +4,96 @@ info:
   title: Backend PopMenu API
   version: v1
 paths:
-  "/api/v1/menus":
+  "/api/v1/restaurants/{restaurant_id}/menus/{menu_id}/menu_items":
+    get:
+      summary: Loads all menu items
+      tags:
+      - Menu Items
+      parameters:
+      - name: menu_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: restaurant_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Menu items loaded
+          content:
+            application/json:
+              example:
+                data:
+                - id: 1
+                  name: Menu Item 1
+                  price: "$71.67"
+                  createdAt: '2025-10-02T22:37:28.531Z'
+                  updatedAt: '2025-10-02T22:37:28.531Z'
+                - id: 2
+                  name: Menu Item 2
+                  price: "$74.12"
+                  createdAt: '2025-10-02T22:37:28.534Z'
+                  updatedAt: '2025-10-02T22:37:28.534Z'
+                - id: 3
+                  name: Menu Item 3
+                  price: "$96.73"
+                  createdAt: '2025-10-02T22:37:28.537Z'
+                  updatedAt: '2025-10-02T22:37:28.537Z'
+                - id: 4
+                  name: Menu Item 4
+                  price: "$78.34"
+                  createdAt: '2025-10-02T22:37:28.539Z'
+                  updatedAt: '2025-10-02T22:37:28.539Z'
+                - id: 5
+                  name: Menu Item 5
+                  price: "$14.72"
+                  createdAt: '2025-10-02T22:37:28.545Z'
+                  updatedAt: '2025-10-02T22:37:28.545Z'
+                - id: 6
+                  name: Menu Item 6
+                  price: "$60.19"
+                  createdAt: '2025-10-02T22:37:28.546Z'
+                  updatedAt: '2025-10-02T22:37:28.546Z'
+                - id: 7
+                  name: Menu Item 7
+                  price: "$35.76"
+                  createdAt: '2025-10-02T22:37:28.547Z'
+                  updatedAt: '2025-10-02T22:37:28.547Z'
+                - id: 8
+                  name: Menu Item 8
+                  price: "$83.79"
+                  createdAt: '2025-10-02T22:37:28.552Z'
+                  updatedAt: '2025-10-02T22:37:28.552Z'
+                - id: 9
+                  name: Menu Item 9
+                  price: "$58.26"
+                  createdAt: '2025-10-02T22:37:28.555Z'
+                  updatedAt: '2025-10-02T22:37:28.555Z'
+                - id: 10
+                  name: Menu Item 10
+                  price: "$36.95"
+                  createdAt: '2025-10-02T22:37:28.557Z'
+                  updatedAt: '2025-10-02T22:37:28.557Z'
+                meta:
+                  currentPage: 1
+                  totalPages: 2
+                  totalCount: 12
+        '404':
+          description: Menu or restaurant not found
+  "/api/v1/restaurants/{restaurant_id}/menus":
     get:
       summary: Loads all menus
       tags:
       - Menus
-      security:
-      - Bearer: []
+      parameters:
+      - name: restaurant_id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Menus loaded
@@ -19,50 +102,14 @@ paths:
               example:
                 data:
                 - id: 1
-                  name: harum
-                  createdAt: '2025-10-01T16:02:43.370Z'
-                  updatedAt: '2025-10-01T16:02:43.370Z'
-                - id: 2
-                  name: autem
-                  createdAt: '2025-10-01T16:02:43.374Z'
-                  updatedAt: '2025-10-01T16:02:43.374Z'
-                - id: 3
-                  name: vero
-                  createdAt: '2025-10-01T16:02:43.375Z'
-                  updatedAt: '2025-10-01T16:02:43.375Z'
-                - id: 4
-                  name: velit
-                  createdAt: '2025-10-01T16:02:43.377Z'
-                  updatedAt: '2025-10-01T16:02:43.377Z'
-                - id: 5
-                  name: numquam
-                  createdAt: '2025-10-01T16:02:43.379Z'
-                  updatedAt: '2025-10-01T16:02:43.379Z'
-                - id: 6
-                  name: qui
-                  createdAt: '2025-10-01T16:02:43.381Z'
-                  updatedAt: '2025-10-01T16:02:43.381Z'
-                - id: 7
-                  name: quidem
-                  createdAt: '2025-10-01T16:02:43.386Z'
-                  updatedAt: '2025-10-01T16:02:43.386Z'
-                - id: 8
-                  name: culpa
-                  createdAt: '2025-10-01T16:02:43.387Z'
-                  updatedAt: '2025-10-01T16:02:43.387Z'
-                - id: 9
-                  name: quam
-                  createdAt: '2025-10-01T16:02:43.390Z'
-                  updatedAt: '2025-10-01T16:02:43.390Z'
-                - id: 10
-                  name: nostrum
-                  createdAt: '2025-10-01T16:02:43.398Z'
-                  updatedAt: '2025-10-01T16:02:43.398Z'
+                  name: dolore
+                  createdAt: '2025-10-02T22:37:28.667Z'
+                  updatedAt: '2025-10-02T22:37:28.667Z'
                 meta:
                   currentPage: 1
-                  totalPages: 2
-                  totalCount: 12
-  "/api/v1/menus/{id}":
+                  totalPages: 1
+                  totalCount: 1
+  "/api/v1/restaurants/{restaurant_id}/menus/{id}":
     get:
       summary: Loads a menu
       tags:
@@ -75,6 +122,11 @@ paths:
         required: true
         schema:
           type: string
+      - name: restaurant_id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Menu loaded
@@ -83,9 +135,9 @@ paths:
               example:
                 menu:
                   id: 1
-                  name: alias
-                  createdAt: '2025-10-01T16:02:43.492Z'
-                  updatedAt: '2025-10-01T16:02:43.492Z'
-                  description: Maxime consectetur provident culpa.
+                  name: sit
+                  createdAt: '2025-10-02T22:37:28.716Z'
+                  updatedAt: '2025-10-02T22:37:28.716Z'
+                  description: Aliquam ratione ut temporibus.
         '404':
           description: Menu not found

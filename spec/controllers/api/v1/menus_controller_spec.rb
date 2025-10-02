@@ -5,11 +5,15 @@ require "rails_helper"
 describe Api::V1::MenusController, type: :controller do
   render_views
 
-
   describe "GET #index" do
-    subject(:make_a_request) { get :index, params: params, format: :json }
+    before(:all) { create(:menu, restaurant: create(:restaurant)) }
 
-    let_it_be(:menus) { create_list(:menu, 12) }
+    subject(:make_a_request) { get :index, params: { restaurant_id: restaurant_id }.merge(params), format: :json }
+
+    let_it_be(:restaurant) { create(:restaurant) }
+    let_it_be(:menus) { create_list(:menu, 12, restaurant: restaurant) }
+    let(:restaurant_id) { restaurant.id }
+    let(:params) { {} }
 
     context 'when params are provided' do
       let(:params) { { page: page, per_page: per_page } }
@@ -82,16 +86,24 @@ describe Api::V1::MenusController, type: :controller do
         })
       end
     end
+
+    context 'when restaurant is not found' do
+      let(:restaurant_id) { 'invalid' }
+
+      it { is_expected.to have_http_status(:not_found) }
+    end
   end
 
   describe "GET #show" do
-    subject(:make_a_request) { get :show, params: params, format: :json }
+    subject(:make_a_request) { get :show, params: { restaurant_id: restaurant_id, id: id }, format: :json }
 
     let_it_be(:menu) { create(:menu) }
+    let_it_be(:restaurant) { menu.restaurant }
+
+    let(:restaurant_id) { restaurant.id }
+    let(:id) { menu.id }
 
     context 'when success' do
-      let(:params) { { id: menu.id } }
-
       it { is_expected.to have_http_status(:success) }
 
       it "returns the correct menu" do
@@ -108,9 +120,24 @@ describe Api::V1::MenusController, type: :controller do
     end
 
     context 'when error' do
-      let(:params) { { id: 'invalid' } }
+      context 'when menu is not found' do
+        let(:id) { 'invalid' }
 
-      it { is_expected.to have_http_status(:not_found) }
+        it { is_expected.to have_http_status(:not_found) }
+      end
+
+      context 'when restaurant is not found' do
+        let(:restaurant_id) { 'invalid' }
+
+        it { is_expected.to have_http_status(:not_found) }
+      end
+
+      context 'when menu is not from the restaurant' do
+        let(:other_restaurant) { create(:restaurant) }
+        let(:restaurant_id) { other_restaurant.id }
+
+        it { is_expected.to have_http_status(:not_found) }
+      end
     end
   end
 end
