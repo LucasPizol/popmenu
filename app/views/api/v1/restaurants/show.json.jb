@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+{
+  restaurant: render("parse_restaurant", restaurant: @restaurant).tap do |restaurant|
+    restaurant[:description] = @restaurant.description
+  end
+}

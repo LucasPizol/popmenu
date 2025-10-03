@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :restaurants, only: [ :index, :show ] do
+      resources :restaurants, only: [ :index, :show, :create, :update, :destroy ] do
         resources :menus, only: [ :index, :show ] do
           resources :menu_items, only: [ :index ]
         end

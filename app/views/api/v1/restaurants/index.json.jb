@@ -1,0 +1,8 @@
+{
+  data: render(partial: "parse_restaurant", collection: @restaurants, as: :restaurant),
+  meta: {
+    currentPage: @restaurants.current_page,
+    totalPages: @restaurants.total_pages,
+    totalCount: @restaurants.total_count
+  }
+}

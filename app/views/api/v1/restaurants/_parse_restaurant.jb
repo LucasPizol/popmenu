@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+{
+  id: restaurant.id,
+  name: restaurant.name,
+  createdAt: restaurant.created_at,
+  updatedAt: restaurant.updated_at
+}
