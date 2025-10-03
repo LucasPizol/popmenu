@@ -6,7 +6,7 @@ describe Api::V1::MenusController, type: :controller do
   render_views
 
   describe "GET #index" do
-    before(:all) { create(:menu, restaurant: create(:restaurant)) }
+    before_all { create(:menu, restaurant: create(:restaurant)) }
 
     subject(:make_a_request) { get :index, params: { restaurant_id: restaurant_id }.merge(params), format: :json }
 
