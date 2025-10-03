@@ -29,54 +29,54 @@ paths:
                 data:
                 - id: 1
                   name: Menu Item 1
-                  price: "$71.67"
-                  createdAt: '2025-10-02T22:37:28.531Z'
-                  updatedAt: '2025-10-02T22:37:28.531Z'
+                  price: "$98.28"
+                  createdAt: '2025-10-03T21:38:41.293Z'
+                  updatedAt: '2025-10-03T21:38:41.293Z'
                 - id: 2
                   name: Menu Item 2
-                  price: "$74.12"
-                  createdAt: '2025-10-02T22:37:28.534Z'
-                  updatedAt: '2025-10-02T22:37:28.534Z'
+                  price: "$94.03"
+                  createdAt: '2025-10-03T21:38:41.298Z'
+                  updatedAt: '2025-10-03T21:38:41.298Z'
                 - id: 3
                   name: Menu Item 3
-                  price: "$96.73"
-                  createdAt: '2025-10-02T22:37:28.537Z'
-                  updatedAt: '2025-10-02T22:37:28.537Z'
+                  price: "$47.21"
+                  createdAt: '2025-10-03T21:38:41.302Z'
+                  updatedAt: '2025-10-03T21:38:41.302Z'
                 - id: 4
                   name: Menu Item 4
-                  price: "$78.34"
-                  createdAt: '2025-10-02T22:37:28.539Z'
-                  updatedAt: '2025-10-02T22:37:28.539Z'
+                  price: "$14.97"
+                  createdAt: '2025-10-03T21:38:41.307Z'
+                  updatedAt: '2025-10-03T21:38:41.307Z'
                 - id: 5
                   name: Menu Item 5
-                  price: "$14.72"
-                  createdAt: '2025-10-02T22:37:28.545Z'
-                  updatedAt: '2025-10-02T22:37:28.545Z'
+                  price: "$66.47"
+                  createdAt: '2025-10-03T21:38:41.319Z'
+                  updatedAt: '2025-10-03T21:38:41.319Z'
                 - id: 6
                   name: Menu Item 6
-                  price: "$60.19"
-                  createdAt: '2025-10-02T22:37:28.546Z'
-                  updatedAt: '2025-10-02T22:37:28.546Z'
+                  price: "$22.18"
+                  createdAt: '2025-10-03T21:38:41.321Z'
+                  updatedAt: '2025-10-03T21:38:41.321Z'
                 - id: 7
                   name: Menu Item 7
-                  price: "$35.76"
-                  createdAt: '2025-10-02T22:37:28.547Z'
-                  updatedAt: '2025-10-02T22:37:28.547Z'
+                  price: "$92.23"
+                  createdAt: '2025-10-03T21:38:41.323Z'
+                  updatedAt: '2025-10-03T21:38:41.323Z'
                 - id: 8
                   name: Menu Item 8
-                  price: "$83.79"
-                  createdAt: '2025-10-02T22:37:28.552Z'
-                  updatedAt: '2025-10-02T22:37:28.552Z'
+                  price: "$20.18"
+                  createdAt: '2025-10-03T21:38:41.333Z'
+                  updatedAt: '2025-10-03T21:38:41.333Z'
                 - id: 9
                   name: Menu Item 9
-                  price: "$58.26"
-                  createdAt: '2025-10-02T22:37:28.555Z'
-                  updatedAt: '2025-10-02T22:37:28.555Z'
+                  price: "$68.79"
+                  createdAt: '2025-10-03T21:38:41.340Z'
+                  updatedAt: '2025-10-03T21:38:41.340Z'
                 - id: 10
                   name: Menu Item 10
-                  price: "$36.95"
-                  createdAt: '2025-10-02T22:37:28.557Z'
-                  updatedAt: '2025-10-02T22:37:28.557Z'
+                  price: "$35.65"
+                  createdAt: '2025-10-03T21:38:41.344Z'
+                  updatedAt: '2025-10-03T21:38:41.344Z'
                 meta:
                   currentPage: 1
                   totalPages: 2
@@ -102,9 +102,9 @@ paths:
               example:
                 data:
                 - id: 1
-                  name: dolore
-                  createdAt: '2025-10-02T22:37:28.667Z'
-                  updatedAt: '2025-10-02T22:37:28.667Z'
+                  name: temporibus
+                  createdAt: '2025-10-03T21:38:41.547Z'
+                  updatedAt: '2025-10-03T21:38:41.547Z'
                 meta:
                   currentPage: 1
                   totalPages: 1
@@ -114,8 +114,6 @@ paths:
       summary: Loads a menu
       tags:
       - Menus
-      security:
-      - Bearer: []
       parameters:
       - name: id
         in: path
@@ -135,9 +133,186 @@ paths:
               example:
                 menu:
                   id: 1
-                  name: sit
-                  createdAt: '2025-10-02T22:37:28.716Z'
-                  updatedAt: '2025-10-02T22:37:28.716Z'
-                  description: Aliquam ratione ut temporibus.
+                  name: nobis
+                  createdAt: '2025-10-03T21:38:41.650Z'
+                  updatedAt: '2025-10-03T21:38:41.650Z'
+                  description: Excepturi enim sapiente quis.
         '404':
           description: Menu not found
+  "/api/v1/restaurants":
+    get:
+      summary: Loads all restaurants
+      tags:
+      - Restaurants
+      responses:
+        '200':
+          description: Restaurants loaded
+          content:
+            application/json:
+              example:
+                data:
+                - id: 1
+                  name: minima
+                  createdAt: '2025-10-03T21:38:41.681Z'
+                  updatedAt: '2025-10-03T21:38:41.681Z'
+                - id: 2
+                  name: soluta
+                  createdAt: '2025-10-03T21:38:41.682Z'
+                  updatedAt: '2025-10-03T21:38:41.682Z'
+                - id: 3
+                  name: et
+                  createdAt: '2025-10-03T21:38:41.684Z'
+                  updatedAt: '2025-10-03T21:38:41.684Z'
+                - id: 4
+                  name: praesentium
+                  createdAt: '2025-10-03T21:38:41.687Z'
+                  updatedAt: '2025-10-03T21:38:41.687Z'
+                - id: 5
+                  name: optio
+                  createdAt: '2025-10-03T21:38:41.688Z'
+                  updatedAt: '2025-10-03T21:38:41.688Z'
+                - id: 6
+                  name: iusto
+                  createdAt: '2025-10-03T21:38:41.689Z'
+                  updatedAt: '2025-10-03T21:38:41.689Z'
+                - id: 7
+                  name: nisi
+                  createdAt: '2025-10-03T21:38:41.691Z'
+                  updatedAt: '2025-10-03T21:38:41.691Z'
+                - id: 8
+                  name: saepe
+                  createdAt: '2025-10-03T21:38:41.692Z'
+                  updatedAt: '2025-10-03T21:38:41.692Z'
+                - id: 9
+                  name: rerum
+                  createdAt: '2025-10-03T21:38:41.694Z'
+                  updatedAt: '2025-10-03T21:38:41.694Z'
+                - id: 10
+                  name: consectetur
+                  createdAt: '2025-10-03T21:38:41.695Z'
+                  updatedAt: '2025-10-03T21:38:41.695Z'
+                meta:
+                  currentPage: 1
+                  totalPages: 2
+                  totalCount: 12
+    post:
+      summary: Creates a restaurant
+      tags:
+      - Restaurants
+      parameters: []
+      responses:
+        '201':
+          description: Restaurant created
+          content:
+            application/json:
+              example:
+                restaurant:
+                  id: 1
+                  name: voluptatem
+                  createdAt: '2025-10-03T21:38:41.725Z'
+                  updatedAt: '2025-10-03T21:38:41.725Z'
+                  description: Aspernatur iste perspiciatis qui.
+        '422':
+          description: Restaurant not created
+          content:
+            application/json:
+              example:
+                errors:
+                  name:
+                  - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: repellendus
+                description:
+                  type: string
+                  example: Dolor qui aliquid excepturi.
+  "/api/v1/restaurants/{id}":
+    get:
+      summary: Loads a restaurant
+      tags:
+      - Restaurants
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Restaurant loaded
+          content:
+            application/json:
+              example:
+                restaurant:
+                  id: 1
+                  name: et
+                  createdAt: '2025-10-03T21:38:41.752Z'
+                  updatedAt: '2025-10-03T21:38:41.752Z'
+                  description: Velit odit corrupti ipsa.
+        '404':
+          description: Restaurant not found
+    put:
+      summary: Updates a restaurant
+      tags:
+      - Restaurants
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Restaurant updated
+          content:
+            application/json:
+              example:
+                restaurant:
+                  id: 1
+                  name: hic
+                  createdAt: '2025-10-03T21:38:41.766Z'
+                  updatedAt: '2025-10-03T21:38:41.775Z'
+                  description: Non qui deleniti qui.
+        '404':
+          description: Restaurant not found
+        '422':
+          description: Restaurant not updated
+          content:
+            application/json:
+              example:
+                errors:
+                  name:
+                  - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: sunt
+                description:
+                  type: string
+                  example: Quaerat a deleniti voluptatem.
+    delete:
+      summary: Deletes a restaurant
+      tags:
+      - Restaurants
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Restaurant deleted
+        '404':
+          description: Restaurant not found

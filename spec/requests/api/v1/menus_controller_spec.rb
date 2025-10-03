@@ -24,7 +24,6 @@ RSpec.describe Api::V1::MenusController, type: :request, swagger_doc: 'api/swagg
   path '/api/v1/restaurants/{restaurant_id}/menus/{id}' do
     get 'Loads a menu' do
       tags 'Menus'
-      security [ Bearer: [] ]
       consumes 'application/json'
       produces 'application/json'
 
