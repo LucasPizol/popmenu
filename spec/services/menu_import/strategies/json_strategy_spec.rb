@@ -17,25 +17,45 @@ describe MenuImport::Strategies::JsonStrategy, :unit do
     it 'imports the restaurants with correct data' do
       strategy.import
 
-      expect(Restaurant.first.name).to eq('Poppo\'s Cafe')
-      expect(Restaurant.last.name).to eq('Casa del Poppo')
+      expect(Restaurant.pluck(:name)).to eq([ "Poppo's Cafe", "Casa del Poppo" ])
     end
 
     it 'imports the menus with correct data' do
       strategy.import
 
-      expect(Menu.first.name).to eq('lunch')
-      expect(Menu.last.name).to eq('dinner')
+      expect(Menu.pluck(:name)).to eq(%w[lunch dinner lunch dinner])
     end
 
     it 'imports the menu items with correct data' do
       strategy.import
 
-      expect(MenuItem.first.name).to eq('Burger')
-      expect(MenuItem.first.price).to eq(Money.new(900))
+      expect(MenuItem.all.map { |item| { name: item.name, price: item.price.format } }).to eq(
+        [
+          { name: 'Burger', price: "$9.00" },
+          { name: 'Small Salad', price: "$5.00" },
+          { name: 'Large Salad', price: "$8.00" },
+          { name: 'Chicken Wings', price: "$9.00" },
+          { name: 'Mega "Burger"', price: "$22.00" },
+          { name: 'Lobster Mac & Cheese', price: "$31.00" }
+        ])
+    end
 
-      expect(MenuItem.last.name).to eq('Lobster Mac & Cheese')
-      expect(MenuItem.last.price).to eq(Money.new(3100))
+    it 'imports the logs with correct data' do
+      strategy.import
+
+      expect(strategy.logs.count).to eq(9)
+      expect(strategy.logs.map(&:to_h)).to eq(
+        [
+          { errors: nil, message: "Menu item created: Burger", status: "success" },
+          { errors: nil, message: "Menu item created: Small Salad", status: "success" },
+          { errors: [ "Name has already been taken" ], message: "Menu item not created: Burger", status: "error" },
+          { errors: nil, message: "Menu item created: Large Salad", status: "success" },
+          { errors: nil, message: "Menu item created: Chicken Wings", status: "success" },
+          { errors: [ "Name has already been taken" ], message: "Menu item not created: Burger", status: "error" },
+          { errors: [ "Name has already been taken" ], message: "Menu item not created: Chicken Wings", status: "error" },
+          { errors: nil, message: "Menu item created: Mega \"Burger\"", status: "success" },
+          { errors: nil, message: "Menu item created: Lobster Mac & Cheese", status: "success" }
+        ])
     end
   end
 end

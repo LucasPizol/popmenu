@@ -2,16 +2,14 @@
 
 class MenuImport::Strategies::JsonStrategy < MenuImport::Strategies::BaseStrategy
   def import
-    ActiveRecord::Base.transaction do
-      restaurants.each do |restaurant|
-        restaurant_record = Restaurant.create(name: restaurant[:name])
+    restaurants.each do |restaurant|
+      ActiveRecord::Base.transaction do
+        restaurant_record = Restaurant.create!(name: restaurant[:name])
 
         menus(restaurant).each do |menu|
-          menu_record = Menu.create(name: menu[:name], restaurant: restaurant_record)
+          menu_record = Menu.create!(name: menu[:name], restaurant: restaurant_record)
 
-          menu_items(menu).each do |menu_item|
-            MenuItem.create(name: menu_item[:name], price: menu_item[:price], menu: menu_record)
-          end
+          menu_items(menu).each { |menu_item| save_menu_item(menu_item, menu_record) }
         end
       end
     end
