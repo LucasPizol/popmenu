@@ -4,6 +4,61 @@ info:
   title: Backend PopMenu API
   version: v1
 paths:
+  "/api/v1/menu_imports":
+    post:
+      summary: Creates a menu import
+      tags:
+      - Menu Imports
+      parameters: []
+      responses:
+        '200':
+          description: Menu import created
+          content:
+            application/json:
+              example:
+              - status: success
+                message: 'Menu item created: Burger'
+                errors:
+              - status: success
+                message: 'Menu item created: Small Salad'
+                errors:
+              - status: error
+                message: 'Menu item not created: Burger'
+                errors:
+                - Name has already been taken
+              - status: success
+                message: 'Menu item created: Large Salad'
+                errors:
+              - status: success
+                message: 'Menu item created: Chicken Wings'
+                errors:
+              - status: error
+                message: 'Menu item not created: Burger'
+                errors:
+                - Name has already been taken
+              - status: error
+                message: 'Menu item not created: Chicken Wings'
+                errors:
+                - Name has already been taken
+              - status: success
+                message: 'Menu item created: Mega "Burger"'
+                errors:
+              - status: success
+                message: 'Menu item created: Lobster Mac & Cheese'
+                errors:
+        '422':
+          description: Menu import not created
+          content:
+            application/json:
+              example:
+                errors:
+                  file_path:
+                  - must be a valid file type
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: file
   "/api/v1/restaurants/{restaurant_id}/menus/{menu_id}/menu_items":
     get:
       summary: Loads all menu items
@@ -29,54 +84,54 @@ paths:
                 data:
                 - id: 1
                   name: Menu Item 1
-                  price: "$98.28"
-                  createdAt: '2025-10-03T21:38:41.293Z'
-                  updatedAt: '2025-10-03T21:38:41.293Z'
+                  price: "$32.76"
+                  createdAt: '2025-10-07T23:49:53.295Z'
+                  updatedAt: '2025-10-07T23:49:53.295Z'
                 - id: 2
                   name: Menu Item 2
-                  price: "$94.03"
-                  createdAt: '2025-10-03T21:38:41.298Z'
-                  updatedAt: '2025-10-03T21:38:41.298Z'
+                  price: "$57.49"
+                  createdAt: '2025-10-07T23:49:53.299Z'
+                  updatedAt: '2025-10-07T23:49:53.299Z'
                 - id: 3
                   name: Menu Item 3
-                  price: "$47.21"
-                  createdAt: '2025-10-03T21:38:41.302Z'
-                  updatedAt: '2025-10-03T21:38:41.302Z'
+                  price: "$68.44"
+                  createdAt: '2025-10-07T23:49:53.301Z'
+                  updatedAt: '2025-10-07T23:49:53.301Z'
                 - id: 4
                   name: Menu Item 4
-                  price: "$14.97"
-                  createdAt: '2025-10-03T21:38:41.307Z'
-                  updatedAt: '2025-10-03T21:38:41.307Z'
+                  price: "$99.53"
+                  createdAt: '2025-10-07T23:49:53.304Z'
+                  updatedAt: '2025-10-07T23:49:53.304Z'
                 - id: 5
                   name: Menu Item 5
-                  price: "$66.47"
-                  createdAt: '2025-10-03T21:38:41.319Z'
-                  updatedAt: '2025-10-03T21:38:41.319Z'
+                  price: "$59.31"
+                  createdAt: '2025-10-07T23:49:53.310Z'
+                  updatedAt: '2025-10-07T23:49:53.310Z'
                 - id: 6
                   name: Menu Item 6
-                  price: "$22.18"
-                  createdAt: '2025-10-03T21:38:41.321Z'
-                  updatedAt: '2025-10-03T21:38:41.321Z'
+                  price: "$38.36"
+                  createdAt: '2025-10-07T23:49:53.315Z'
+                  updatedAt: '2025-10-07T23:49:53.315Z'
                 - id: 7
                   name: Menu Item 7
-                  price: "$92.23"
-                  createdAt: '2025-10-03T21:38:41.323Z'
-                  updatedAt: '2025-10-03T21:38:41.323Z'
+                  price: "$95.24"
+                  createdAt: '2025-10-07T23:49:53.317Z'
+                  updatedAt: '2025-10-07T23:49:53.317Z'
                 - id: 8
                   name: Menu Item 8
-                  price: "$20.18"
-                  createdAt: '2025-10-03T21:38:41.333Z'
-                  updatedAt: '2025-10-03T21:38:41.333Z'
+                  price: "$74.51"
+                  createdAt: '2025-10-07T23:49:53.328Z'
+                  updatedAt: '2025-10-07T23:49:53.328Z'
                 - id: 9
                   name: Menu Item 9
-                  price: "$68.79"
-                  createdAt: '2025-10-03T21:38:41.340Z'
-                  updatedAt: '2025-10-03T21:38:41.340Z'
+                  price: "$41.96"
+                  createdAt: '2025-10-07T23:49:53.332Z'
+                  updatedAt: '2025-10-07T23:49:53.332Z'
                 - id: 10
                   name: Menu Item 10
-                  price: "$35.65"
-                  createdAt: '2025-10-03T21:38:41.344Z'
-                  updatedAt: '2025-10-03T21:38:41.344Z'
+                  price: "$34.05"
+                  createdAt: '2025-10-07T23:49:53.336Z'
+                  updatedAt: '2025-10-07T23:49:53.336Z'
                 meta:
                   currentPage: 1
                   totalPages: 2
@@ -102,9 +157,9 @@ paths:
               example:
                 data:
                 - id: 1
-                  name: temporibus
-                  createdAt: '2025-10-03T21:38:41.547Z'
-                  updatedAt: '2025-10-03T21:38:41.547Z'
+                  name: itaque
+                  createdAt: '2025-10-07T23:49:53.425Z'
+                  updatedAt: '2025-10-07T23:49:53.425Z'
                 meta:
                   currentPage: 1
                   totalPages: 1
@@ -133,10 +188,10 @@ paths:
               example:
                 menu:
                   id: 1
-                  name: nobis
-                  createdAt: '2025-10-03T21:38:41.650Z'
-                  updatedAt: '2025-10-03T21:38:41.650Z'
-                  description: Excepturi enim sapiente quis.
+                  name: eligendi
+                  createdAt: '2025-10-07T23:49:53.483Z'
+                  updatedAt: '2025-10-07T23:49:53.483Z'
+                  description: Expedita repellendus laborum dolor.
         '404':
           description: Menu not found
   "/api/v1/restaurants":
@@ -152,45 +207,45 @@ paths:
               example:
                 data:
                 - id: 1
-                  name: minima
-                  createdAt: '2025-10-03T21:38:41.681Z'
-                  updatedAt: '2025-10-03T21:38:41.681Z'
+                  name: accusantium
+                  createdAt: '2025-10-07T23:49:53.520Z'
+                  updatedAt: '2025-10-07T23:49:53.520Z'
                 - id: 2
-                  name: soluta
-                  createdAt: '2025-10-03T21:38:41.682Z'
-                  updatedAt: '2025-10-03T21:38:41.682Z'
-                - id: 3
                   name: et
-                  createdAt: '2025-10-03T21:38:41.684Z'
-                  updatedAt: '2025-10-03T21:38:41.684Z'
+                  createdAt: '2025-10-07T23:49:53.521Z'
+                  updatedAt: '2025-10-07T23:49:53.521Z'
+                - id: 3
+                  name: animi
+                  createdAt: '2025-10-07T23:49:53.522Z'
+                  updatedAt: '2025-10-07T23:49:53.522Z'
                 - id: 4
-                  name: praesentium
-                  createdAt: '2025-10-03T21:38:41.687Z'
-                  updatedAt: '2025-10-03T21:38:41.687Z'
+                  name: et
+                  createdAt: '2025-10-07T23:49:53.525Z'
+                  updatedAt: '2025-10-07T23:49:53.525Z'
                 - id: 5
-                  name: optio
-                  createdAt: '2025-10-03T21:38:41.688Z'
-                  updatedAt: '2025-10-03T21:38:41.688Z'
+                  name: aliquam
+                  createdAt: '2025-10-07T23:49:53.527Z'
+                  updatedAt: '2025-10-07T23:49:53.527Z'
                 - id: 6
-                  name: iusto
-                  createdAt: '2025-10-03T21:38:41.689Z'
-                  updatedAt: '2025-10-03T21:38:41.689Z'
+                  name: excepturi
+                  createdAt: '2025-10-07T23:49:53.529Z'
+                  updatedAt: '2025-10-07T23:49:53.529Z'
                 - id: 7
-                  name: nisi
-                  createdAt: '2025-10-03T21:38:41.691Z'
-                  updatedAt: '2025-10-03T21:38:41.691Z'
+                  name: et
+                  createdAt: '2025-10-07T23:49:53.531Z'
+                  updatedAt: '2025-10-07T23:49:53.531Z'
                 - id: 8
-                  name: saepe
-                  createdAt: '2025-10-03T21:38:41.692Z'
-                  updatedAt: '2025-10-03T21:38:41.692Z'
+                  name: commodi
+                  createdAt: '2025-10-07T23:49:53.536Z'
+                  updatedAt: '2025-10-07T23:49:53.536Z'
                 - id: 9
-                  name: rerum
-                  createdAt: '2025-10-03T21:38:41.694Z'
-                  updatedAt: '2025-10-03T21:38:41.694Z'
+                  name: distinctio
+                  createdAt: '2025-10-07T23:49:53.542Z'
+                  updatedAt: '2025-10-07T23:49:53.542Z'
                 - id: 10
-                  name: consectetur
-                  createdAt: '2025-10-03T21:38:41.695Z'
-                  updatedAt: '2025-10-03T21:38:41.695Z'
+                  name: ut
+                  createdAt: '2025-10-07T23:49:53.543Z'
+                  updatedAt: '2025-10-07T23:49:53.543Z'
                 meta:
                   currentPage: 1
                   totalPages: 2
@@ -208,10 +263,10 @@ paths:
               example:
                 restaurant:
                   id: 1
-                  name: voluptatem
-                  createdAt: '2025-10-03T21:38:41.725Z'
-                  updatedAt: '2025-10-03T21:38:41.725Z'
-                  description: Aspernatur iste perspiciatis qui.
+                  name: possimus
+                  createdAt: '2025-10-07T23:49:53.571Z'
+                  updatedAt: '2025-10-07T23:49:53.571Z'
+                  description: Non fugit excepturi ad.
         '422':
           description: Restaurant not created
           content:
@@ -228,10 +283,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: repellendus
+                  example: voluptatem
                 description:
                   type: string
-                  example: Dolor qui aliquid excepturi.
+                  example: Et officia ut est.
   "/api/v1/restaurants/{id}":
     get:
       summary: Loads a restaurant
@@ -251,10 +306,10 @@ paths:
               example:
                 restaurant:
                   id: 1
-                  name: et
-                  createdAt: '2025-10-03T21:38:41.752Z'
-                  updatedAt: '2025-10-03T21:38:41.752Z'
-                  description: Velit odit corrupti ipsa.
+                  name: qui
+                  createdAt: '2025-10-07T23:49:53.597Z'
+                  updatedAt: '2025-10-07T23:49:53.597Z'
+                  description: Voluptas recusandae accusamus id.
         '404':
           description: Restaurant not found
     put:
@@ -275,10 +330,10 @@ paths:
               example:
                 restaurant:
                   id: 1
-                  name: hic
-                  createdAt: '2025-10-03T21:38:41.766Z'
-                  updatedAt: '2025-10-03T21:38:41.775Z'
-                  description: Non qui deleniti qui.
+                  name: quaerat
+                  createdAt: '2025-10-07T23:49:53.612Z'
+                  updatedAt: '2025-10-07T23:49:53.617Z'
+                  description: Vel sit voluptates mollitia.
         '404':
           description: Restaurant not found
         '422':
@@ -297,10 +352,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: sunt
+                  example: quas
                 description:
                   type: string
-                  example: Quaerat a deleniti voluptatem.
+                  example: Consequatur tempora aperiam recusandae.
     delete:
       summary: Deletes a restaurant
       tags:

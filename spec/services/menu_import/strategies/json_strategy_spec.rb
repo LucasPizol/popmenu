@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe MenuImport::Strategies::JsonStrategy, :unit do
-  let(:file_path) { Rails.root.join('spec/support/menu_import/file.json') }
+  let(:file_path) { Rails.root.join('spec/fixtures/files/menu_import/file.json') }
   let(:restaurant_id) { 1 }
   let(:strategy) { described_class.new(file_path) }
 

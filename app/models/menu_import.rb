@@ -12,10 +12,17 @@ class MenuImport
   validate :validate_file_type
 
   def import
-    if valid?
-      factory.create_strategy.import
-    end
+    return false unless valid?
+
+    strategy = factory.create_strategy
+
+    strategy.import
+    @logs = strategy.logs
+
+    true
   end
+
+  attr_reader :logs
 
   private
 

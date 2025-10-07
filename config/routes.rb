@@ -11,6 +11,8 @@ Rails.application.routes.draw do
           resources :menu_items, only: [ :index ]
         end
       end
+
+      resources :menu_imports, only: [:create], defaults: { format: :multipart_form }
     end
   end
 end
