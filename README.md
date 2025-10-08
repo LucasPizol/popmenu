@@ -82,7 +82,7 @@ rubocop -a
 
 ## 🎨 Technical Decisions
 
-- **Strategy Pattern**: For different import types
+- **Strategy + Factory Pattern**: For different import types (demonstrates extensibility as required - "If requirements change, your code should be adaptable")
 - **Many-to-Many**: MenuAssociation for flexible relationships
 - **Monetize**: Gem for price manipulation
 - **Swagger**: Automatic API documentation
