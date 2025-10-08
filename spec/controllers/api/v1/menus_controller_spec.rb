@@ -114,7 +114,8 @@ describe Api::V1::MenusController, type: :controller do
           name: menu.name,
           description: menu.description,
           createdAt: a_kind_of(String),
-          updatedAt: a_kind_of(String)
+          updatedAt: a_kind_of(String),
+          menuItems: api_v1_restaurant_menu_menu_items_path(menu.restaurant, menu)
         })
       end
     end

@@ -102,7 +102,8 @@ describe Api::V1::RestaurantsController, type: :controller do
           name: restaurant.name,
           description: restaurant.description,
           createdAt: a_kind_of(String),
-          updatedAt: a_kind_of(String)
+          updatedAt: a_kind_of(String),
+          menus: "/api/v1/restaurants/#{restaurant.id}/menus"
         })
       end
     end
@@ -136,7 +137,8 @@ describe Api::V1::RestaurantsController, type: :controller do
           name: name,
           description: description,
           createdAt: a_kind_of(String),
-          updatedAt: a_kind_of(String)
+          updatedAt: a_kind_of(String),
+          menus: api_v1_restaurant_menus_path(Restaurant.last)
         })
       end
     end

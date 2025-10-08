@@ -4,5 +4,6 @@
   id: restaurant.id,
   name: restaurant.name,
   createdAt: restaurant.created_at,
-  updatedAt: restaurant.updated_at
+  updatedAt: restaurant.updated_at,
+  menus: api_v1_restaurant_menus_path(restaurant)
 }
