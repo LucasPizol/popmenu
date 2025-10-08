@@ -9,7 +9,7 @@ class MenuImport::Strategies::JsonStrategy < MenuImport::Strategies::BaseStrateg
         menus(restaurant).each do |menu|
           menu_record = Menu.create!(name: menu[:name], restaurant: restaurant_record)
 
-          menu_items(menu).each { |menu_item| save_menu_item(menu_item, menu_record) }
+          menu_items(menu).each { |menu_item| save_menu_item(menu_item, menu_record, restaurant_record) }
         end
       end
     end

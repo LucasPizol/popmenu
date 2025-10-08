@@ -5,7 +5,7 @@ class Api::V1::MenuItemsController < Api::V1::ApplicationController
   before_action :set_menu
 
   def index
-    @menu_items = @menu.menu_items.page(params[:page] || 1).per(params[:per_page] || 10)
+    @menu_associations = @menu.menu_associations.includes(:menu_item).page(params[:page] || 1).per(params[:per_page] || 10)
   end
 
   private

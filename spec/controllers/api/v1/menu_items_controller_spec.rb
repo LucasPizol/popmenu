@@ -11,7 +11,14 @@ describe Api::V1::MenuItemsController, type: :controller do
   describe "GET #index" do
     subject(:make_a_request) { get :index, params: { menu_id: menu_id, restaurant_id: restaurant_id }.merge(params), format: :json }
 
-    let_it_be(:menu_items) { create_list(:menu_item, 12, menu: menu) }
+    let_it_be(:menu_items) { create_list(:menu_item, 12, restaurant: restaurant) }
+
+    before_all do
+      menu_items.each do |menu_item|
+        create(:menu_association, menu: menu, menu_item: menu_item)
+      end
+    end
+
     let(:menu_id) { menu.id }
     let(:restaurant_id) { restaurant.id }
     let(:params) { {} }

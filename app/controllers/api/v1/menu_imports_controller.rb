@@ -9,7 +9,7 @@ class Api::V1::MenuImportsController < Api::V1::ApplicationController
     if @menu_import.import
       render json: @menu_import.logs.map(&:to_h), status: :ok
     else
-      render json: { errors: @menu_import.errors }, status: :unprocessable_entity
+      render json: { errors: @menu_import.errors }, status: :unprocessable_content
     end
   end
 

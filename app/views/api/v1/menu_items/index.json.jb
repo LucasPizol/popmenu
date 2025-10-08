@@ -1,8 +1,8 @@
 {
-  data: render(partial: "parse_menu_item", collection: @menu_items, as: :menu_item),
+  data: render(partial: "parse_menu_item", collection: @menu_associations, as: :menu_association),
   meta: {
-    currentPage: @menu_items.current_page,
-    totalPages: @menu_items.total_pages,
-    totalCount: @menu_items.total_count
+    currentPage: @menu_associations.current_page,
+    totalPages: @menu_associations.total_pages,
+    totalCount: @menu_associations.total_count
   }
 }

@@ -14,13 +14,21 @@ class MenuImport::Strategies::BaseStrategy
 
   protected
 
-  def save_menu_item(menu_item_json, menu_record)
-    menu_item_record = MenuItem.new(name: menu_item_json[:name], price: menu_item_json[:price], menu: menu_record)
+  def save_menu_item(menu_item_json, menu_record, restaurant_record)
+    menu_item_record = restaurant_record.menu_items.where("lower(name) = ?", menu_item_json[:name].downcase).first
 
-    menu_import_log = menu_item_record.save ? MenuImport::Log.new(status: :success, message: "Menu item created: #{menu_item_json[:name]}") :
-                                              MenuImport::Log.new(status: :error, message: "Menu item not created: #{menu_item_json[:name]}", errors: menu_item_record.errors.full_messages)
+    if menu_item_record.blank?
+      menu_item_record = MenuItem.create!(name: menu_item_json[:name], restaurant: restaurant_record)
+    end
 
-    logs << menu_import_log
+    menu_association_record = MenuAssociation.find_or_initialize_by(menu: menu_record, menu_item: menu_item_record)
+
+    menu_association_record.price = menu_item_json[:price]
+    menu_association_record.save!
+
+    logs << MenuImport::Log.new(status: :success, message: "Menu item created: #{menu_item_json[:name]}")
+  rescue ActiveRecord::RecordInvalid => e
+    logs << MenuImport::Log.new(status: :error, message: "Menu item not created: #{menu_item_json[:name]}", errors: e.record.errors.full_messages)
   end
 
   def file_content

@@ -29,14 +29,25 @@ describe MenuImport::Strategies::JsonStrategy, :unit do
     it 'imports the menu items with correct data' do
       strategy.import
 
-      expect(MenuItem.all.map { |item| { name: item.name, price: item.price.format } }).to eq(
+      menu_associations = MenuAssociation.includes(:menu_item).map do |item|
+        {
+          name: item.menu_item.name,
+          price: item.price.format,
+          menu_item_id: item.menu_item_id,
+          menu_id: item.menu_id,
+          restaurant_id: item.menu_item.restaurant_id
+        }
+      end
+
+      expect(menu_associations).to eq(
         [
-          { name: 'Burger', price: "$9.00" },
-          { name: 'Small Salad', price: "$5.00" },
-          { name: 'Large Salad', price: "$8.00" },
-          { name: 'Chicken Wings', price: "$9.00" },
-          { name: 'Mega "Burger"', price: "$22.00" },
-          { name: 'Lobster Mac & Cheese', price: "$31.00" }
+          { name: 'Burger', price: "$9.00", menu_item_id: 1, menu_id: 1, restaurant_id: 1 },
+          { name: 'Small Salad', price: "$5.00", menu_item_id: 2, menu_id: 1, restaurant_id: 1 },
+          { name: 'Burger', price: "$15.00", menu_item_id: 1, menu_id: 2, restaurant_id: 1 },
+          { name: 'Large Salad', price: "$8.00", menu_item_id: 3, menu_id: 2, restaurant_id: 1 },
+          { name: 'Chicken Wings', price: "$9.00", menu_item_id: 4, menu_id: 3, restaurant_id: 2 },
+          { name: 'Mega "Burger"', price: "$22.00", menu_item_id: 5, menu_id: 4, restaurant_id: 2 },
+          { name: 'Lobster Mac & Cheese', price: "$31.00", menu_item_id: 6, menu_id: 4, restaurant_id: 2 }
         ])
     end
 
@@ -48,11 +59,11 @@ describe MenuImport::Strategies::JsonStrategy, :unit do
         [
           { errors: nil, message: "Menu item created: Burger", status: "success" },
           { errors: nil, message: "Menu item created: Small Salad", status: "success" },
-          { errors: [ "Name has already been taken" ], message: "Menu item not created: Burger", status: "error" },
+          { errors: nil, message: "Menu item created: Burger", status: "success" },
           { errors: nil, message: "Menu item created: Large Salad", status: "success" },
           { errors: nil, message: "Menu item created: Chicken Wings", status: "success" },
           { errors: [ "Name has already been taken" ], message: "Menu item not created: Burger", status: "error" },
-          { errors: [ "Name has already been taken" ], message: "Menu item not created: Chicken Wings", status: "error" },
+          { errors: nil, message: "Menu item created: Chicken Wings", status: "success" },
           { errors: nil, message: "Menu item created: Mega \"Burger\"", status: "success" },
           { errors: nil, message: "Menu item created: Lobster Mac & Cheese", status: "success" }
         ])

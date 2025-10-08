@@ -145,7 +145,7 @@ describe Api::V1::RestaurantsController, type: :controller do
       context 'when name is not present' do
         let(:name) { nil }
 
-        it { is_expected.to have_http_status(:unprocessable_entity) }
+        it { is_expected.to have_http_status(:unprocessable_content) }
 
         it "returns the correct errors" do
           errors = Restaurant.new.errors
@@ -159,7 +159,7 @@ describe Api::V1::RestaurantsController, type: :controller do
       context 'when description is too long' do
         let(:description) { Faker::Lorem.paragraph(sentence_count: 1000) }
 
-        it { is_expected.to have_http_status(:unprocessable_entity) }
+        it { is_expected.to have_http_status(:unprocessable_content) }
 
         it "returns the correct errors" do
           errors = Restaurant.new.errors
@@ -194,7 +194,7 @@ describe Api::V1::RestaurantsController, type: :controller do
       context 'when name is not present' do
         let(:name) { nil }
 
-        it { is_expected.to have_http_status(:unprocessable_entity) }
+        it { is_expected.to have_http_status(:unprocessable_content) }
 
         it "returns the correct errors" do
           errors = Restaurant.new.errors
@@ -208,7 +208,7 @@ describe Api::V1::RestaurantsController, type: :controller do
       context 'when description is too long' do
         let(:description) { Faker::Lorem.paragraph(sentence_count: 1000) }
 
-        it { is_expected.to have_http_status(:unprocessable_entity) }
+        it { is_expected.to have_http_status(:unprocessable_content) }
 
         it "returns the correct errors" do
           errors = Restaurant.new.errors

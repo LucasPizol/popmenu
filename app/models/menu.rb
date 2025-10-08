@@ -23,6 +23,7 @@ class Menu < ApplicationRecord
   validates :name, presence: true
   validates :description, length: { maximum: 1000 }
 
-  has_many :menu_items, dependent: :destroy
+  has_many :menu_associations, dependent: :destroy
+  has_many :menu_items, through: :menu_associations
   belongs_to :restaurant
 end

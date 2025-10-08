@@ -22,10 +22,9 @@ paths:
               - status: success
                 message: 'Menu item created: Small Salad'
                 errors:
-              - status: error
-                message: 'Menu item not created: Burger'
+              - status: success
+                message: 'Menu item created: Burger'
                 errors:
-                - Name has already been taken
               - status: success
                 message: 'Menu item created: Large Salad'
                 errors:
@@ -36,10 +35,9 @@ paths:
                 message: 'Menu item not created: Burger'
                 errors:
                 - Name has already been taken
-              - status: error
-                message: 'Menu item not created: Chicken Wings'
+              - status: success
+                message: 'Menu item created: Chicken Wings'
                 errors:
-                - Name has already been taken
               - status: success
                 message: 'Menu item created: Mega "Burger"'
                 errors:
@@ -84,54 +82,64 @@ paths:
                 data:
                 - id: 1
                   name: Menu Item 1
-                  price: "$32.76"
-                  createdAt: '2025-10-07T23:49:53.295Z'
-                  updatedAt: '2025-10-07T23:49:53.295Z'
+                  price: 771.0
+                  priceFormatted: "$771.00"
+                  createdAt: '2025-10-08T00:47:29.097Z'
+                  updatedAt: '2025-10-08T00:47:29.097Z'
                 - id: 2
                   name: Menu Item 2
-                  price: "$57.49"
-                  createdAt: '2025-10-07T23:49:53.299Z'
-                  updatedAt: '2025-10-07T23:49:53.299Z'
+                  price: 563.0
+                  priceFormatted: "$563.00"
+                  createdAt: '2025-10-08T00:47:29.102Z'
+                  updatedAt: '2025-10-08T00:47:29.102Z'
                 - id: 3
                   name: Menu Item 3
-                  price: "$68.44"
-                  createdAt: '2025-10-07T23:49:53.301Z'
-                  updatedAt: '2025-10-07T23:49:53.301Z'
+                  price: 779.0
+                  priceFormatted: "$779.00"
+                  createdAt: '2025-10-08T00:47:29.105Z'
+                  updatedAt: '2025-10-08T00:47:29.105Z'
                 - id: 4
                   name: Menu Item 4
-                  price: "$99.53"
-                  createdAt: '2025-10-07T23:49:53.304Z'
-                  updatedAt: '2025-10-07T23:49:53.304Z'
+                  price: 252.0
+                  priceFormatted: "$252.00"
+                  createdAt: '2025-10-08T00:47:29.114Z'
+                  updatedAt: '2025-10-08T00:47:29.114Z'
                 - id: 5
                   name: Menu Item 5
-                  price: "$59.31"
-                  createdAt: '2025-10-07T23:49:53.310Z'
-                  updatedAt: '2025-10-07T23:49:53.310Z'
+                  price: 399.0
+                  priceFormatted: "$399.00"
+                  createdAt: '2025-10-08T00:47:29.116Z'
+                  updatedAt: '2025-10-08T00:47:29.116Z'
                 - id: 6
                   name: Menu Item 6
-                  price: "$38.36"
-                  createdAt: '2025-10-07T23:49:53.315Z'
-                  updatedAt: '2025-10-07T23:49:53.315Z'
+                  price: 243.0
+                  priceFormatted: "$243.00"
+                  createdAt: '2025-10-08T00:47:29.120Z'
+                  updatedAt: '2025-10-08T00:47:29.120Z'
                 - id: 7
                   name: Menu Item 7
-                  price: "$95.24"
-                  createdAt: '2025-10-07T23:49:53.317Z'
-                  updatedAt: '2025-10-07T23:49:53.317Z'
+                  price: 260.0
+                  priceFormatted: "$260.00"
+                  createdAt: '2025-10-08T00:47:29.124Z'
+                  updatedAt: '2025-10-08T00:47:29.124Z'
                 - id: 8
                   name: Menu Item 8
-                  price: "$74.51"
-                  createdAt: '2025-10-07T23:49:53.328Z'
-                  updatedAt: '2025-10-07T23:49:53.328Z'
+                  price: 583.0
+                  priceFormatted: "$583.00"
+                  createdAt: '2025-10-08T00:47:29.129Z'
+                  updatedAt: '2025-10-08T00:47:29.129Z'
                 - id: 9
                   name: Menu Item 9
-                  price: "$41.96"
-                  createdAt: '2025-10-07T23:49:53.332Z'
-                  updatedAt: '2025-10-07T23:49:53.332Z'
+                  price: 823.0
+                  priceFormatted: "$823.00"
+                  createdAt: '2025-10-08T00:47:29.132Z'
+                  updatedAt: '2025-10-08T00:47:29.132Z'
                 - id: 10
                   name: Menu Item 10
-                  price: "$34.05"
-                  createdAt: '2025-10-07T23:49:53.336Z'
-                  updatedAt: '2025-10-07T23:49:53.336Z'
+                  price: 504.0
+                  priceFormatted: "$504.00"
+                  createdAt: '2025-10-08T00:47:29.134Z'
+                  updatedAt: '2025-10-08T00:47:29.134Z'
                 meta:
                   currentPage: 1
                   totalPages: 2
@@ -157,9 +165,9 @@ paths:
               example:
                 data:
                 - id: 1
-                  name: itaque
-                  createdAt: '2025-10-07T23:49:53.425Z'
-                  updatedAt: '2025-10-07T23:49:53.425Z'
+                  name: inventore
+                  createdAt: '2025-10-08T00:47:29.255Z'
+                  updatedAt: '2025-10-08T00:47:29.255Z'
                 meta:
                   currentPage: 1
                   totalPages: 1
@@ -188,10 +196,10 @@ paths:
               example:
                 menu:
                   id: 1
-                  name: eligendi
-                  createdAt: '2025-10-07T23:49:53.483Z'
-                  updatedAt: '2025-10-07T23:49:53.483Z'
-                  description: Expedita repellendus laborum dolor.
+                  name: a
+                  createdAt: '2025-10-08T00:47:29.312Z'
+                  updatedAt: '2025-10-08T00:47:29.312Z'
+                  description: Nobis dolore placeat magnam.
         '404':
           description: Menu not found
   "/api/v1/restaurants":
@@ -207,45 +215,45 @@ paths:
               example:
                 data:
                 - id: 1
-                  name: accusantium
-                  createdAt: '2025-10-07T23:49:53.520Z'
-                  updatedAt: '2025-10-07T23:49:53.520Z'
+                  name: quia
+                  createdAt: '2025-10-08T00:47:29.341Z'
+                  updatedAt: '2025-10-08T00:47:29.341Z'
                 - id: 2
-                  name: et
-                  createdAt: '2025-10-07T23:49:53.521Z'
-                  updatedAt: '2025-10-07T23:49:53.521Z'
+                  name: voluptas
+                  createdAt: '2025-10-08T00:47:29.342Z'
+                  updatedAt: '2025-10-08T00:47:29.342Z'
                 - id: 3
-                  name: animi
-                  createdAt: '2025-10-07T23:49:53.522Z'
-                  updatedAt: '2025-10-07T23:49:53.522Z'
+                  name: aut
+                  createdAt: '2025-10-08T00:47:29.343Z'
+                  updatedAt: '2025-10-08T00:47:29.343Z'
                 - id: 4
-                  name: et
-                  createdAt: '2025-10-07T23:49:53.525Z'
-                  updatedAt: '2025-10-07T23:49:53.525Z'
+                  name: sed
+                  createdAt: '2025-10-08T00:47:29.344Z'
+                  updatedAt: '2025-10-08T00:47:29.344Z'
                 - id: 5
-                  name: aliquam
-                  createdAt: '2025-10-07T23:49:53.527Z'
-                  updatedAt: '2025-10-07T23:49:53.527Z'
+                  name: nulla
+                  createdAt: '2025-10-08T00:47:29.344Z'
+                  updatedAt: '2025-10-08T00:47:29.344Z'
                 - id: 6
-                  name: excepturi
-                  createdAt: '2025-10-07T23:49:53.529Z'
-                  updatedAt: '2025-10-07T23:49:53.529Z'
+                  name: qui
+                  createdAt: '2025-10-08T00:47:29.346Z'
+                  updatedAt: '2025-10-08T00:47:29.346Z'
                 - id: 7
                   name: et
-                  createdAt: '2025-10-07T23:49:53.531Z'
-                  updatedAt: '2025-10-07T23:49:53.531Z'
+                  createdAt: '2025-10-08T00:47:29.347Z'
+                  updatedAt: '2025-10-08T00:47:29.347Z'
                 - id: 8
-                  name: commodi
-                  createdAt: '2025-10-07T23:49:53.536Z'
-                  updatedAt: '2025-10-07T23:49:53.536Z'
+                  name: ea
+                  createdAt: '2025-10-08T00:47:29.350Z'
+                  updatedAt: '2025-10-08T00:47:29.350Z'
                 - id: 9
                   name: distinctio
-                  createdAt: '2025-10-07T23:49:53.542Z'
-                  updatedAt: '2025-10-07T23:49:53.542Z'
+                  createdAt: '2025-10-08T00:47:29.353Z'
+                  updatedAt: '2025-10-08T00:47:29.353Z'
                 - id: 10
-                  name: ut
-                  createdAt: '2025-10-07T23:49:53.543Z'
-                  updatedAt: '2025-10-07T23:49:53.543Z'
+                  name: rerum
+                  createdAt: '2025-10-08T00:47:29.354Z'
+                  updatedAt: '2025-10-08T00:47:29.354Z'
                 meta:
                   currentPage: 1
                   totalPages: 2
@@ -263,10 +271,10 @@ paths:
               example:
                 restaurant:
                   id: 1
-                  name: possimus
-                  createdAt: '2025-10-07T23:49:53.571Z'
-                  updatedAt: '2025-10-07T23:49:53.571Z'
-                  description: Non fugit excepturi ad.
+                  name: ea
+                  createdAt: '2025-10-08T00:47:29.371Z'
+                  updatedAt: '2025-10-08T00:47:29.371Z'
+                  description: Sunt amet cum consectetur.
         '422':
           description: Restaurant not created
           content:
@@ -283,10 +291,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: voluptatem
+                  example: consequatur
                 description:
                   type: string
-                  example: Et officia ut est.
+                  example: Ea sit quasi repudiandae.
   "/api/v1/restaurants/{id}":
     get:
       summary: Loads a restaurant
@@ -306,10 +314,10 @@ paths:
               example:
                 restaurant:
                   id: 1
-                  name: qui
-                  createdAt: '2025-10-07T23:49:53.597Z'
-                  updatedAt: '2025-10-07T23:49:53.597Z'
-                  description: Voluptas recusandae accusamus id.
+                  name: nihil
+                  createdAt: '2025-10-08T00:47:29.390Z'
+                  updatedAt: '2025-10-08T00:47:29.390Z'
+                  description: Autem dolorem blanditiis minus.
         '404':
           description: Restaurant not found
     put:
@@ -330,10 +338,10 @@ paths:
               example:
                 restaurant:
                   id: 1
-                  name: quaerat
-                  createdAt: '2025-10-07T23:49:53.612Z'
-                  updatedAt: '2025-10-07T23:49:53.617Z'
-                  description: Vel sit voluptates mollitia.
+                  name: atque
+                  createdAt: '2025-10-08T00:47:29.406Z'
+                  updatedAt: '2025-10-08T00:47:29.411Z'
+                  description: Aliquid dolorem laudantium odio.
         '404':
           description: Restaurant not found
         '422':
@@ -352,10 +360,10 @@ paths:
               properties:
                 name:
                   type: string
-                  example: quas
+                  example: sit
                 description:
                   type: string
-                  example: Consequatur tempora aperiam recusandae.
+                  example: Nulla veritatis nobis possimus.
     delete:
       summary: Deletes a restaurant
       tags:

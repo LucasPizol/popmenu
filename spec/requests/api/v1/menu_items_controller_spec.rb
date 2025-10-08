@@ -13,7 +13,13 @@ RSpec.describe Api::V1::MenuItemsController, type: :request, swagger_doc: 'api/s
       parameter name: :restaurant_id, in: :path, type: :string
 
       let_it_be(:menu) { create(:menu) }
-      let_it_be(:menu_items) { create_list(:menu_item, 12, menu: menu) }
+      let_it_be(:menu_items) { create_list(:menu_item, 12, restaurant: menu.restaurant) }
+
+      before_all do
+        menu_items.each do |menu_item|
+          create(:menu_association, menu: menu, menu_item: menu_item, price: rand(100..1000))
+        end
+      end
 
       response '200', 'Menu items loaded' do
         let(:menu_id) { menu.id }

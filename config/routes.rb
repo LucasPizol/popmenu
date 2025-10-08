@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :menu_imports, only: [:create], defaults: { format: :multipart_form }
+      resources :menu_imports, only: [ :create ], defaults: { format: :multipart_form }
     end
   end
 end

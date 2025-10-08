@@ -24,6 +24,7 @@ describe Restaurant, :unit, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:menus).dependent(:destroy) }
-    it { is_expected.to have_many(:menu_items).through(:menus) }
+    it { is_expected.to have_many(:menu_associations).through(:menus) }
+    it { is_expected.to have_many(:menu_items) }
   end
 end
