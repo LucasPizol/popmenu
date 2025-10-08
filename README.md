@@ -1,24 +1,89 @@
-# README
+# 🍽️ PopMenu - Technical Test Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a technical test developed for PopMenu company, implementing a REST API for restaurant menu management with JSON data import functionality.
 
-Things you may want to cover:
+## 🎯 Test Objective
 
-* Ruby version
+Demonstrate skills in:
+- REST API architecture with Ruby on Rails
+- Many-to-many relationships between models
+- JSON data import and processing
+- Unit and integration testing
 
-* System dependencies
+## 🚀 How to Run
 
-* Configuration
+```bash
+# Install dependencies
+bundle install
 
-* Database creation
+# Setup database
+rails db:migrate
 
-* Database initialization
+# Start server
+rails s
+```
 
-* How to run the test suite
+## 📚 API Documentation
 
-* Services (job queues, cache servers, search engines, etc.)
+Access interactive documentation at: **http://localhost:3000/api-docs**
 
-* Deployment instructions
+## 🧪 Run Tests
 
-* ...
+```bash
+# Run all tests
+rspec
+
+# Run specific tests
+rspec spec/models/
+rspec spec/controllers/
+rspec spec/services/
+```
+
+## 🔍 Code Verification
+
+```bash
+# Check code style
+rubocop
+
+# Auto-fix issues
+rubocop -a
+```
+
+## 📋 Implementations Completed
+
+### Level 1 - Basic
+- ✅ `Restaurant`, `Menu` and `MenuItem` models
+- ✅ Proper associations between models
+- ✅ RESTful CRUD endpoints
+- ✅ Comprehensive unit tests
+
+### Level 2 - Multiple Menus
+- ✅ Many-to-many relationship Menu ↔ MenuItem
+- ✅ Global uniqueness of MenuItem in database
+- ✅ MenuItem can be in multiple menus of the same restaurant
+- ✅ Different prices per menu through `MenuAssociation`
+
+**Note**: This level was implemented while traveling, which may have caused some comprehension issues due to limited time and infrastructure constraints. This is why there's a commit performing the refactoring of this part while developing Level 3.
+
+### Level 3 - JSON Import
+- ✅ Endpoint for JSON file upload
+- ✅ JSON → application model conversion tool
+- ✅ Detailed success/failure logs
+- ✅ Exception handling and validations
+- ✅ Support for different formats (`menu_items` and `dishes`)
+
+## 🔗 API Endpoints
+
+- `GET /api/v1/restaurants` - List restaurants
+- `POST /api/v1/restaurants` - Create restaurant
+- `GET /api/v1/restaurants/:id/menus` - List menus
+- `GET /api/v1/restaurants/:id/menus/:menu_id/menu_items` - List menu items
+- `POST /api/v1/menu_imports` - Import JSON data
+
+## 🎨 Technical Decisions
+
+- **Strategy Pattern**: For different import types
+- **Many-to-Many**: MenuAssociation for flexible relationships
+- **Monetize**: Gem for price manipulation
+- **Swagger**: Automatic API documentation
+- **RSpec**: Tests with shoulda-matchers
