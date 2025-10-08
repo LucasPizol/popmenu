@@ -57,15 +57,15 @@ describe MenuImport::Strategies::JsonStrategy, :unit do
       expect(strategy.logs.count).to eq(9)
       expect(strategy.logs.map(&:to_h)).to eq(
         [
-          { errors: nil, message: "Menu item created: Burger", status: "success" },
-          { errors: nil, message: "Menu item created: Small Salad", status: "success" },
-          { errors: nil, message: "Menu item created: Burger", status: "success" },
-          { errors: nil, message: "Menu item created: Large Salad", status: "success" },
-          { errors: nil, message: "Menu item created: Chicken Wings", status: "success" },
-          { errors: [ "Name has already been taken" ], message: "Menu item not created: Burger", status: "error" },
-          { errors: nil, message: "Menu item created: Chicken Wings", status: "success" },
-          { errors: nil, message: "Menu item created: Mega \"Burger\"", status: "success" },
-          { errors: nil, message: "Menu item created: Lobster Mac & Cheese", status: "success" }
+          { errors: nil, message: "Burger created and was correctly associated to 'lunch'", status: "success" },
+          { errors: nil, message: "Small Salad created and was correctly associated to 'lunch'", status: "success" },
+          { errors: nil, message: "Burger already exists and was correctly associated to 'dinner'", status: "success" },
+          { errors: nil, message: "Large Salad created and was correctly associated to 'dinner'", status: "success" },
+          { errors: nil, message: "Chicken Wings created and was correctly associated to 'lunch'", status: "success" },
+          { errors: [ "Name has already been taken" ], message: "Burger not created", status: "error" },
+          { errors: nil, message: "Chicken Wings already exists and was correctly associated to 'lunch'", status: "success" },
+          { errors: nil, message: "Mega \"Burger\" created and was correctly associated to 'dinner'", status: "success" },
+          { errors: nil, message: "Lobster Mac & Cheese created and was correctly associated to 'dinner'", status: "success" }
         ])
     end
   end
